@@ -1,0 +1,220 @@
+$page-bg: #bbb;
+$app-bg: #fff;
+$app-border: #7a7;
+
+$primary-text: #030;
+$darker-text: #020;
+$special-text: #003b5a;
+
+$card-top-bg: #cec;
+$card-secondary-bg: #eee;
+$card-border: #696;
+$card-secondary-border: #ccc;
+
+$primary-shadow: #252;
+$corner-radius: 1rem;
+
+$timer-color: rgb(0, 122, 122);
+$timer-size: 100px;
+
+$transition-time: 0.75s;
+
+body {
+    background-color: $page-bg;
+}
+
+span {
+    white-space: pre-wrap;
+}
+
+#app {
+    max-width: 400px;
+    min-height: 600px;
+    margin: 0.5rem auto;
+    color: $primary-text;
+    background-color: $app-bg;
+    border: solid 1px $app-border;
+    border-top-left-radius: $corner-radius;
+    border-top-right-radius: $corner-radius;
+    overflow: hidden;
+    box-shadow: 3px 3px 5px $primary-shadow;
+}
+
+.callout {
+    color: $special-text;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+    .btn {
+        font-size: 0.8rem;
+        padding: 0 0.5rem;
+        border-radius: 0;
+    }
+}
+
+#game {
+    padding: 0 0.5rem;
+
+    .stage {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+        border: 1px solid $card-border;
+        border-top-left-radius: $corner-radius;
+        border-top-right-radius: $corner-radius;
+        box-shadow: 3px 3px 5px $primary-shadow;
+
+        &.disabled {
+            opacity: 0.5;
+        }
+
+        .block {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            padding: 1rem;
+        } 
+
+        .block:not(.banner):not(.description):not(:last-child) {
+            border-bottom: 1px dashed $card-secondary-border;
+        }
+
+        .banner {
+            background-color: $card-top-bg;
+            color: $darker-text;
+            border-bottom: 1px solid $card-border;
+            padding: 0;
+            min-height: 2rem;
+        }
+
+        .description {
+            background-color: $card-secondary-bg;
+            border-bottom: 1px solid $card-secondary-border;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .upper {
+            text-align: center;
+        }
+
+        .right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .lower {
+            display: flex;
+            justify-content: center;
+        }
+
+        .timer {
+            width: $timer-size;
+            height: $timer-size;
+            position: relative;
+
+            .CircularProgressbar-path {
+                stroke: $timer-color;
+            }
+
+            .CircularProgressbar-text {
+                stroke: none;
+                fill: $primary-text;
+                font-size: 1.2rem;
+            }
+
+            .spinner-border {
+                width: 100%;
+                height: 100%;
+                border: calc($timer-size / 10) solid $timer-color;
+                border-right-color: transparent;
+            }
+
+            .overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 90%;
+            }
+        }
+
+        .button{
+            &.done {
+                opacity: 0;
+            }
+            &.fading {
+                transition: opacity $transition-time;
+            }
+        } 
+    }
+}
+
+#settings {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        padding: 0.5rem 1rem;;
+        background-color: $card-top-bg;
+        color: $darker-text;
+        border-bottom: 1px solid $card-border;
+        .title {
+            font-size: 1.5rem;
+        }
+        .btn {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.5rem;
+        }
+    }
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        .form-switch {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            .form-check-input {
+                margin: 0;
+                width: 3em;
+                height: 1.5em;
+            }
+        }
+        .category {
+            font-size: 1.2rem;
+            padding: 0.25rem 0.5rem;
+            margin: 0.5rem;
+            background-color: $card-secondary-bg;
+            border: 1px solid $card-secondary-border;
+            text-align: center;
+        }
+    }
+}
+
+
+
+
